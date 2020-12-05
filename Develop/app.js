@@ -13,7 +13,7 @@ const render = require("./lib/htmlRenderer");
 const Team = []
 const Idnumbers = []
 
-function Manager(){
+function manager(){
     inquirer.prompt([
 {
     type:"input",
@@ -38,15 +38,15 @@ function Manager(){
 
     ])
     .then(answers =>{
-        const Manager = new Manager(answers.MName, answers.MID, answers.Memail,answers.Mofficenumber)
-        Team.push(Manager)
+        const manager = new Manager(answers.MName, answers.MID, answers.Memail,answers.Mofficenumber)
+        Team.push(manager)
         Idnumbers.push(answers.MID)
         createTeam()
     })
 
 }
 
-function Engineer(){
+function engineer(){
     inquirer.prompt([
 {
     type:"input",
@@ -80,7 +80,7 @@ function Engineer(){
 
 }
 
-function Intern(){
+function intern(){
     inquirer.prompt([
 {
     type:"input",
@@ -105,8 +105,8 @@ function Intern(){
 
     ])
     .then(answers =>{
-        const Intern = new Intern(answers.IName, answers.IID, answers.Iemail,answers.Ischool)
-        Team.push(Intern)
+        const intern = new Intern(answers.IName, answers.IID, answers.Iemail,answers.Ischool)
+        Team.push(intern)
         Idnumbers.push(answers.IID)
         createTeam()
     })
@@ -124,25 +124,27 @@ function createTeam(){
     .then(userchoice =>{
         switch(userchoice.HRChoice){
             case"Engineer":
-            Engineer()
+            engineer()
             break
             case"Intern":
-            Intern()
+            intern()
             break
             case"Manager":
-            Manager()
+            manager()
             break
             default:
+            buildTeam()
         }
 
     })
-    function buildTeam() {
-          if (!fs.existsSync(OUTPUT_DIR)) {
-          fs.mkdirSync(OUTPUT_DIR)
-        }
-        fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
-      }
 }
+function buildTeam() {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR)
+  }
+  fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+}
+manager()
 
 
 
