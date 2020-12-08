@@ -5,5 +5,5 @@ The program will prompt the manager for their information including their name, 
 
 After the manager enters their information, they are asked if they would like to add an employee and which kind of employee to add, Engineer or intern. Based upon the answer to this question, the manager will be prompted for questions about the employee's name, email, ID number and either their GitHub username (Engineer) or school (intern).
 
-Screencastify Video Link (below)
+Screencastify Video Link - hit download button (link below)
 https://drive.google.com/file/d/1tfGxTeufTLDjistQeanSxTGwW5_7MYYv/view
